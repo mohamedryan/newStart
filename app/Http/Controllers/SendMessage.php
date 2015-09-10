@@ -49,29 +49,4 @@ class SendMessage extends Controller
      }
 
 
-
-
-
-
-    //  public function store(MListRequest $request)
-    // {
-    //     $rules = array(
-    //     'name'      =>  'required',
-    //     'email'=>'required|email|unique:mailinglist,email',
-    // );
-    //     $validator = \Validator::make($request->all(),$rules);
-
-
-    //    if($validator->fails()){
-    //    return Response::json(array(
-    //     'success' => false,
-    //     'errors' => $validator->getMessageBag()->toArray()), 400);
-    //     }
-
-    //     MList::saveData(\Input::all());
-    //     // return Response::json(array('success' => true), 200);
-    // }
-
-
-
 }
