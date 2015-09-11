@@ -21,6 +21,12 @@ Route::get('/contact', function () {
 
 Route::post('contactSendMessage','ContactController@send');
 
-Route::get('dashboard/contact', function () {
+Route::get('/dashboard', function () {
+    return view('admin.index');
+});
+
+Route::get('/dashboard/contact', function () {
     return view('admin.contact.contact');
 });
+
+Route::get('/dashboard/ajaxGetContent','AjaxContentController@getPage');

@@ -160,7 +160,7 @@
         </div>
       </div>
       <nav>
-        <div class="nav-wrapper"><a href="/" class="brand-logo hide-on-search-mode">Logo</a><a href="#" data-activates="slide-out" class="menu left button-collapse hide-on-large-only">
+        <div class="nav-wrapper"><a href="index" class="brand-logo hide-on-search-mode">Logo</a><a href="#" data-activates="slide-out" class="menu left button-collapse hide-on-large-only">
             <div class="menu-btn"><span></span></div></a>
           <ul id="nav-mobile" class="right hide-on-search-mode">
             <li class="notifications icon"><a href="#" data-activates="notification" data-constrainwidth="false" data-animation="material" class="dropdown-button"><i class="material-icons">notifications</i></a></li>
@@ -181,7 +181,7 @@
         </div>
         <div class="side-body">
           <ul class="list">
-            <li class="waves-effect"><a href="contact.html">contact<i class="material-icons left">inbox</i></a></li>
+            <li class="waves-effect"><a href="contact">contact<i class="material-icons left">inbox</i></a></li>
             <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
             <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
             <li class="subheader">sub header</li>
