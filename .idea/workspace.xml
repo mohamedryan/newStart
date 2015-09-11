@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06705868-20ff-460f-bfa2-407581714830" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/site/contact/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/site/contact/form.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/site/js/main.js" afterPath="$PROJECT_DIR$/public/site/js/main.js" />
     </list>
     <ignored path="newStart.iws" />
@@ -60,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/public/site/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.7066493">
-              <caret line="168" column="20" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="20" />
+              <caret line="159" column="37" selection-start-line="159" selection-start-column="37" selection-end-line="159" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -998,7 +996,7 @@
     <entry file="file://$PROJECT_DIR$/public/site/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7066493">
-          <caret line="168" column="20" selection-start-line="168" selection-start-column="20" selection-end-line="168" selection-end-column="20" />
+          <caret line="159" column="37" selection-start-line="159" selection-start-column="37" selection-end-line="159" selection-end-column="37" />
           <folding />
         </state>
       </provider>

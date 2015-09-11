@@ -166,7 +166,7 @@ $(document).ready(function() {
 	                    $(form + ' :input#' + 'message' + ' span').remove();
 	                }
 	                //$('thanks for you').appendTo(form + ' > p');
-                    
+
 
 	            });
 
