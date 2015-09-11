@@ -18,5 +18,8 @@ Route::get('/', function () {
 Route::get('/contact', function () {
     return view('site.contact.contact');
 });
-
+// contact route
+Route::get('dashboard/contact', function () {
+    return view('admin.contact.contact');
+});
 
