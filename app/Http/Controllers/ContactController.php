@@ -35,10 +35,11 @@ class ContactController extends Controller
         $request->message";
 
         $sendMail = mail($to, $subject, $msg, "From: $Email");
+
         if ($sendMail) {
-            return response()->json(['name' => 'success', 'state' => 'success']);
+            return response()->json(['sendState' => true]);
         }else{
-            return response()->json(['name' => 'errors', 'state' => 'errors']);
+            return response()->json(['sendState' => false]);
         }
 
      }
