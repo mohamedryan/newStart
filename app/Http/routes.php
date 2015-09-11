@@ -22,4 +22,4 @@ Route::get('/contact', function () {
     return view('site.contact.contact');
 });
 
-Route::post('contactSendMessage','SendMessage@send');
+Route::post('contactSendMessage','ContactController@send');
