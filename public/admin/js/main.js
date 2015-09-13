@@ -1,5 +1,4 @@
 "use strict";
-
 function getContrastYIQ(a) {
     a = a.replace(/^#/, "");
     var b = parseInt(a.substr(0, 2), 16),
@@ -223,46 +222,122 @@ function initiate() {
 });
 
 
-$(document).on('click', '#slide-out a,.brand-logo', function() {
-    event.preventDefault();
-    var anchor = $(this);
-    var url = '/dashboard/ajaxGetContent';
-    var data = anchor.attr('href');
+if(window.location.hash.substr(1) == ''){
+    $('#wrapper').css({'display':'block','opacity':1});
+}
+
+$(document).ready(function() {
+
+    var url;
+    var pageHash = window.location.hash.substr(3);
     var viewport = $('#wrapper');
     var loading = $('<div id="main-progress"> <div class="wrapper"> <p>Getting your content ...</p><div class="progress"><div class="indeterminate"></div></div></div></div>');
     var anchorState;
+    var pathName = window.location.pathname;
+    var prefix;
+    if(pathName[pathName.length - 1] != '/'){
 
+        prefix = pathName.split("/")[1] + '/';
+    }else{
+        prefix =  '';
+    }
 
-    $('nav a,#slide-out a').click(function(){
+    if(pageHash != ''){
+        var urlPathName = window.location.pathname.replace('/dashboard/','');
+        if(urlPathName == pageHash){
+            //window.location.hash="";
+            return;
+        }
+        viewport.velocity({
+                opacity: 0,
+            }, {
+                display: 'none',
+                duration: 150,
+                complete: function () {
+                    ajaxContentLoad(pageHash);
+                },
 
-        if(anchorState == 0)
-            return false;
+            }
+        ).after(loading);
 
+        loading.velocity({opacity: 1}, {display: 'block'});
+    }
+    window.onpopstate = function () {
+        var pageName = location.pathname.split('/')[location.pathname.split('/').length -1];
+        viewport.velocity({
+                opacity: 0,
+            }, {
+                display: 'none',
+                duration: 150,
+                complete: function () {
+                    ajaxContentLoad(pageName);
+                },
+
+            }
+        ).after(loading);
+
+        loading.velocity({opacity: 1}, {display: 'block'});
+
+    };
+    $(document).on('click', '#slide-out a,.brand-logo', function () {
+        event.preventDefault();
+        var anchor = $(this);
+        //var data = anchor.attr('href');
+        url = anchor.attr('href');
+        var pathName = window.location.pathname;
+        var prefix ;
+
+        if(pathName[pathName.length - 1] != '/'){
+            console.log(pathName.split('/'));
+            var pathNameSplit = pathName.split('/');
+            if(pathNameSplit.length > 2){
+                prefix = '';
+            }else{
+                if(pathNameSplit[1] == url ){
+                    prefix = '';
+                    //data = '';
+                }else{
+                    prefix = pathName.split("/")[1] + '/';
+                }
+            }
+        }else{
+            prefix =  '';
+        }
+
+        history.pushState({},'',prefix + url);
+
+        $('nav a,#slide-out a').click(function () {
+
+            if (anchorState == 0)
+                return false;
+
+        });
+
+            anchorState = 0;
+
+            viewport.velocity({
+                    opacity: 0,
+                }, {
+                    display: 'none',
+                    duration: 150,
+                    complete: function () {
+                        ajaxContentLoad(url);
+                    },
+
+                }
+            ).after(loading);
+
+            loading.velocity({opacity: 1}, {display: 'block'});
     });
 
-     anchorState = 0;
-
-    viewport.velocity({
-            opacity: 0,
-        },{
-            display :'none',
-            duration:150,
-            complete:function(){
-                request();
-            },
-
-        }
-    ).after(loading);
-
-    loading.velocity({opacity: 1}, {display: 'block'});
 
 
-    function request(){
+    function ajaxContentLoad(url) {
 
         $.ajax({
             type: 'get',
             url: url,
-            data: {'pageName' : data},
+            //data: {'pageName': data},
 
             success: function (data) {
 
@@ -275,7 +350,11 @@ $(document).on('click', '#slide-out a,.brand-logo', function() {
 
                         viewport.velocity('stop').velocity(
                             {opacity: 1},
-                            {display:'block',duration: 150,complete: function () {anchorState = 1;}}
+                            {
+                                display: 'block', duration: 150, complete: function () {
+                                anchorState = 1;
+                            }
+                            }
                         );
                     }
                 });
@@ -289,6 +368,4 @@ $(document).on('click', '#slide-out a,.brand-logo', function() {
         });
 
     }
-
 });
-
