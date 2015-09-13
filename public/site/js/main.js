@@ -116,66 +116,57 @@ $(document).ready(function() {
 	$('.sendMessage').submit(function(event) {
 
 	    event.preventDefault();
-	    var url = $(this).attr('action');
-	    var datos = $(this).serialize();
-	    var form = $(this);
+        var form = $(this);
+        var url = form.attr('action');
 
 	    $.ajax({
-	        url: $(this).prop('action'),
+	        url: form.prop('action'),
 	        type: 'post',
-	        data: $(this).serialize(),
+	        data: form.serialize(),
 
 	        success: function(data) {
 
+                form.find('text-danger').remove();
+
+                if(data.sendState){
+	                $('.sendMessage :input').val(null);
+
+                    //$('your message sent successfully .').appendTo('.sendMessage > p');
+                    // success message
+                }else{
+                    console.log('rtutyuyiui'); // something went wrong
+                }
 
 
-	        	if(data.success){
-
-	            $('.sendMessage :input').val(null);
-	        	}else{
-	           
-                     console.log('rtutyuyiui');
-	        	}
-	            $('.sendMessage :input#' + 'name' + ' + div > span').remove();
-	            $('.sendMessage :input#' + 'email' + ' + div > span').remove();
-	            $('.sendMessage :input#' + 'message' + ' + div > span').remove();
-
-	            $('thanks for you').appendTo('.sendMessage > p');
 
 	        },
 	        error: function(jqXhr) {
 
 	            var errors = jqXhr.responseJSON;
+                console.log(errors);
 
-	            $.each(errors, function(key, value) {
+                form.find('.text-danger').remove();
 
-	                var t = $(".sendMessage :input#" + key + " + div > span").length;
-	                console.log(t);
+                $.each(errors, function(key, value) {
 
-	                if (t == 0) {
-	                    $('<span class="text-danger">' + errors[key] + '</span>').appendTo('.sendMessage :input#' + key + ' + div');
 
-	                }
-	                if (t > 0) {
-	                    $('.sendMessage :input#' + key + ' + div > span').remove();
+                    form.find(':input#' + key).parent().append('<span class="text-danger">' + errors[key] + '</span>');
 
-	                    $('<span class="text-danger">' + errors[key] + '</span>').appendTo('.sendMessage :input#' + key + ' + div');
-
-	                }
 
 	                if (errors['name'] == undefined) {
 
-	                    $('.sendMessage :input#' + 'name' + ' + div > span').remove();
+	                    $(form + ' :input#' + 'name' + ' span').remove();
 	                }
 	                if (errors['email'] == undefined) {
 
-	                    $('.sendMessage :input#' + 'email' + ' + div > span').remove();
+	                    $(form + ' :input#' + 'email' + ' span').remove();
 	                }
 	                if (errors['message'] == undefined) {
 
-	                    $('.sendMessage :input#' + 'message' + ' + div > span').remove();
+	                    $(form + ' :input#' + 'message' + ' span').remove();
 	                }
-	                $('thanks for you').appendTo('.sendMessage > p');
+	                //$('thanks for you').appendTo(form + ' > p');
+
 
 	            });
 
