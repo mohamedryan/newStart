@@ -5,9 +5,11 @@
     <title>Adminlize</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory-->
+
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory-->
     <link rel="stylesheet" href="/admin/css/vendor.css">
     <link rel="stylesheet" href="/admin/css/main.css">
   </head>
@@ -181,41 +183,39 @@
         </div>
         <div class="side-body">
           <ul class="list">
-            <li class="waves-effect"><a href="{{url('/dashboard/contact')}}">contact<i class="material-icons left">inbox</i></a></li>
-            <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
-            <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
-            <li class="subheader">sub header</li>
-            <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
-            <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
-            <li class="waves-effect"><a href="#!">inbox<i class="material-icons left">inbox</i></a></li>
+            <li class="dropdown">
+              <ul class="collapsible collapsible-accordion">
+                  <li>
+                      <h6 class="collapsible-header waves-effect">Contact<i class="material-icons left">inbox</i></h6>
+                      <div class="collapsible-body">
+                          <ul>
+                              <li class="waves-effect" ><a href="{{url('/dashboard/contact')}}">Information</a></li>
+                              <li class="waves-effect"><a href="{{url('/dashboard/themes/contact')}}">Theme</a></li>
+                          </ul>
+                      </div>
+                  </li>
+              </ul>
+            </li>
+
           </ul>
-          <ul class="avatar-options">
+         <!-- <ul class="avatar-options">
             <li class="waves-effect"><a href="#!">settings<i class="material-icons left">settings</i></a></li>
             <li class="waves-effect"><a href="#!">settings<i class="material-icons left">settings</i></a></li>
             <li class="waves-effect"><a href="#!">settings<i class="material-icons left">settings</i></a></li>
-          </ul>
+          </ul> -->
         </div>
       </div><a id="sidenav-initiate" href="#" data-activates="slide-out" class="hide"></a>
     </header>
     <main>
       <div id="wrapper" class="hide-on-search-mode">
-      @yield('content')
+        @yield('content')
       </div>
     </main>
     <footer>
     </footer>
     <script src="/admin/js/vendor.js"></script>
-    <script src="/admin/js/signals.min.js"></script>
-    <script src="/admin/js/crossroads.min.js"></script>
     <script src="/admin/js/main.js"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    @yield('scripts')
+
   </body>
 </html>
