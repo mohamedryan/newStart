@@ -15,9 +15,7 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('/contact', function () {
-	return view('site.contact.contact');
-});
+Route::get('/contact','PageController@contact');
 
 Route::get('/dashboard/themes/contact', 'ContactThemeController@getThemes');
 Route::post('/dashboard/themes/contact', 'ContactThemeController@postThemes');
