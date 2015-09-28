@@ -27,5 +27,6 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/dashboard/contact', 'ContactInfoController@edit');
+Route::put('/dashboard/contact', 'ContactInfoController@update');
 
 Route::get('/dashboard/ajaxGetContent', 'AjaxContentController@getPage');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\models\ContactInfo;
+use App\Http\Requests\Request\EditContactInfoRequest;
 
 class ContactInfoController extends Controller {
 
@@ -14,7 +16,8 @@ class ContactInfoController extends Controller {
 	 * @return Response
 	 */
 	public function edit() {
-		return view('admin.contact.contact')->render();
+		$info = ContactInfo::getAll();
+		return view('admin.contact.contact',compact('info'))->render();
 	}
 
 	/**
@@ -24,8 +27,21 @@ class ContactInfoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Request $request, $id) {
-		//
+	public function update(EditContactInfoRequest $request) {
+
+		foreach ($request->except(['_token','_method']) as $key => $value) {
+
+            $updateInfo = Setting::where('name','=',$key)->update(['value' => $value]);
+
+            if(!$updateInfo) break;
+
+		}
+
+		if ($updateInfo) {
+			 return response()->json(['requestState' => true]);
+        }else{
+            return response()->json(['requestState' => false]);
+        }
 	}
 
 }
