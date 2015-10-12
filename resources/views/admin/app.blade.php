@@ -166,7 +166,7 @@
             <div class="menu-btn"><span></span></div></a>
           <ul id="nav-mobile" class="right hide-on-search-mode">
             <li class="notifications icon"><a href="#" data-activates="notification" data-constrainwidth="false" data-animation="material" class="dropdown-button"><i class="material-icons">notifications</i></a></li>
-            <li class="fullscreen icon waves-effect waves-light"><a href="#"><i class="material-icons">fullscreen</i></a></li>
+            <li class="fullscreen icon waves-effect waves-light"><a><i class="material-icons">fullscreen</i></a></li>
             <li class="icon search"><a href="#"><i class="material-icons">search</i></a></li>
           </ul>
           <form method="" action="" class="show-on-search-mode">
@@ -215,7 +215,9 @@
     </footer>
     <script src="/admin/js/vendor.js"></script>
     <script src="/admin/js/main.js"></script>
-    @yield('scripts')
+    <div id="scripts">
+      @yield('scripts')
+    </div>
 
   </body>
 </html>
