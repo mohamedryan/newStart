@@ -9,24 +9,24 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
-*/
+ */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('site.contact.contact');
-});
+Route::get('/contact','PageController@contact');
 
-Route::post('contactSendMessage','ContactController@send');
+Route::get('/dashboard/themes/contact', 'ContactThemeController@getThemes');
+Route::post('/dashboard/themes/contact', 'ContactThemeController@postThemes');
+
+Route::post('contactSendMessage', 'ContactController@send');
 
 Route::get('/dashboard', function () {
-    return view('admin.index');
+	return view('admin.index');
 });
 
-Route::get('/dashboard/contact', function () {
-    return view('admin.contact.contact');
-});
+Route::get('/dashboard/contact', 'ContactInfoController@edit');
+Route::put('/dashboard/contact', 'ContactInfoController@update');
 
-Route::get('/dashboard/ajaxGetContent','AjaxContentController@getPage');
+Route::get('/dashboard/ajaxGetContent', 'AjaxContentController@getPage');

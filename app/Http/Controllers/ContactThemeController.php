@@ -2,86 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\models\ContactTheme;
+use Illuminate\Http\Request;
+use Response;
 
-class ContactThemeController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
+class ContactThemeController extends Controller {
+	public function getThemes() {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
+		$themes = ContactTheme::all();
+		return view('admin.contact.contactThemes', compact('themes'))->render();
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	public function postThemes(Request $request) {
+		$layout_id = $request->get('layout_id');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+		//makeAllUnSelected
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+		ContactTheme::where('selected',1)->update(['selected' => 0]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+		if($layout = ContactTheme::find($layout_id)) {
+			if ($layout->update(['selected' => 1])) {
+				return Response::json(['requestState' => true]);
+			} else {
+				return Response::json(['requestState' => false]);
+			}
+		}else{
+			return Response::json(['requestState' => false]);
+		}
+
+	}
 }

@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-md-6">
+<div class="col-xs-12 col-md-{{$component[1]}}">
     {!! Form::open(['method' => 'POST','url'=>['contactSendMessage'],'class'=>'form-theme sendMessage']) !!}
         <div class="panel-heading">
             <h2 class="panel-title text-uppercase">get in touch</h2>
@@ -15,7 +15,7 @@
             </div>
             <button type="submit" class="btn btn-default pull-right">send</button>
         </div>
-        
+
 
     {!! Form::close() !!}
 </div>

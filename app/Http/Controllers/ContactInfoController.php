@@ -2,86 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\models\ContactInfo;
+use App\Http\Requests\Request\EditContactInfoRequest;
 
-class ContactInfoController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
+class ContactInfoController extends Controller {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit() {
+		$info = ContactInfo::getAll();
+		return view('admin.contact.contact',compact('info'))->render();
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  Request  $request
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update(EditContactInfoRequest $request) {
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
+		foreach ($request->except(['_token','_method']) as $key => $value) {
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            $updateInfo = Setting::where('name','=',$key)->update(['value' => $value]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+            if(!$updateInfo) break;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+		}
+
+		if ($updateInfo) {
+			 return response()->json(['requestState' => true]);
+        }else{
+            return response()->json(['requestState' => false]);
+        }
+	}
+
 }

@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-md-6">
+<div class="col-xs-12 col-md-{{$component[1]}}">
     <div class="panel-heading">
         <h2 class="panel-title text-uppercase">contact us</h2>
     </div>
