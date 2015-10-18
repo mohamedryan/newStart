@@ -126,15 +126,13 @@ $(document).ready(function() {
 
 	        success: function(data) {
 
-                form.find('text-danger').remove();
+                form.find('.text-danger').remove();
 
                 if(data.sendState){
 	                $('.sendMessage :input').val(null);
-
-                    //$('your message sent successfully .').appendTo('.sendMessage > p');
-                    // success message
+                    form.find('.panel-body').prepend('<p class="text-success sendState">Message sent succesfully. <span class="glyphicon glyphicon-ok"aria-hidden="true"></span></p>');
                 }else{
-                    console.log('rtutyuyiui'); // something went wrong
+                    form.find('.panel-body').prepend('<p class="text-danger sendState">Something went wrong , try again. <span class="glyphicon glyphicon-remove"aria-hidden="true"></span></p>');
                 }
 
 

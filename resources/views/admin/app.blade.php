@@ -5,16 +5,45 @@
     <title>Adminlize</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-      <!-- Place favicon.ico and apple-touch-icon.png in the root directory-->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory-->
     <link rel="stylesheet" href="/admin/css/vendor.css">
     <link rel="stylesheet" href="/admin/css/main.css">
   </head>
-  <body>
+  <body class="window__unloaded">
     <header>
+      <div class="preloading">
+        <div id="window__preloader">
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="ajax__preloader" class="indeterminate">
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+        <div id="content__preloader">
+          <div class="wrapper">
+            <p>Getting your content ...</p>
+            <div class="progress">
+              <div class="indeterminate"></div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="notification" class="dropdown-content">
         <div class="dropdown-wrapper scrollbar-macosx">
           <ul class="chips">
@@ -166,7 +195,7 @@
             <div class="menu-btn"><span></span></div></a>
           <ul id="nav-mobile" class="right hide-on-search-mode">
             <li class="notifications icon"><a href="#" data-activates="notification" data-constrainwidth="false" data-animation="material" class="dropdown-button"><i class="material-icons">notifications</i></a></li>
-            <li class="fullscreen icon waves-effect waves-light"><a><i class="material-icons">fullscreen</i></a></li>
+            <li class="fullscreen icon waves-effect waves-light"><a href="#"><i class="material-icons">fullscreen</i></a></li>
             <li class="icon search"><a href="#"><i class="material-icons">search</i></a></li>
           </ul>
           <form method="" action="" class="show-on-search-mode">
@@ -176,7 +205,7 @@
           </form>
         </div>
       </nav>
-      <div id="slide-out" class="side-nav">
+       <div id="slide-out" class="side-nav">
         <div class="side-header">
           <div class="avatar-img"><img src="" alt=""></div>
           <p class="avatar-name">john doe</p><i id="avatar-options" class="material-icons right">chevron_left</i>
@@ -208,7 +237,7 @@
     </header>
     <main>
       <div id="wrapper" class="hide-on-search-mode">
-        @yield('content')
+      @yield('content')
       </div>
     </main>
     <footer>
@@ -218,6 +247,5 @@
     <div id="scripts">
       @yield('scripts')
     </div>
-
   </body>
 </html>

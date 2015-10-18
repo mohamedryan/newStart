@@ -15,7 +15,7 @@
             </div>
             <button type="submit" class="btn btn-default pull-right">send</button>
         </div>
-        
+
 
     {!! Form::close() !!}
 </div>
