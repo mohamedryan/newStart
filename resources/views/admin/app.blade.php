@@ -205,33 +205,26 @@
           </form>
         </div>
       </nav>
-       <div id="slide-out" class="side-nav">
+      <div id="slide-out" class="side-nav fixed">
         <div class="side-header">
           <div class="avatar-img"><img src="" alt=""></div>
           <p class="avatar-name">john doe</p><i id="avatar-options" class="material-icons right">chevron_left</i>
         </div>
         <div class="side-body">
           <ul class="list">
-            <li class="dropdown">
+            <li class="no-padding">
               <ul class="collapsible collapsible-accordion">
-                  <li>
-                      <h6 class="collapsible-header waves-effect">Contact<i class="material-icons left">inbox</i></h6>
-                      <div class="collapsible-body">
-                          <ul>
-                              <li class="waves-effect" ><a href="{{url('/dashboard/contact')}}">Information</a></li>
-                              <li class="waves-effect"><a href="{{url('/dashboard/themes/contact')}}">Theme</a></li>
-                          </ul>
-                      </div>
-                  </li>
+                <li><a class="collapsible-header waves-effect waves-blue">contact<i class="material-icons">&#xE311;</i></a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><a href="{{url('/dashboard/contact')}}" class="waves-effect waves-blue">Information<i class="material-icons left">&#xE88E;</i></a></li>
+                      <li><a href="{{url('/dashboard/themes/contact')}}" class="waves-effect waves-blue">Theme<i class="material-icons left">&#xE41D;</i></a></li>
+                    </ul>
+                  </div>
+                </li>
               </ul>
             </li>
-
           </ul>
-         <!-- <ul class="avatar-options">
-            <li class="waves-effect"><a href="#!">settings<i class="material-icons left">settings</i></a></li>
-            <li class="waves-effect"><a href="#!">settings<i class="material-icons left">settings</i></a></li>
-            <li class="waves-effect"><a href="#!">settings<i class="material-icons left">settings</i></a></li>
-          </ul> -->
         </div>
       </div><a id="sidenav-initiate" href="#" data-activates="slide-out" class="hide"></a>
     </header>
