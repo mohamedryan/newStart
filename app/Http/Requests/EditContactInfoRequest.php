@@ -26,7 +26,6 @@ class EditContactInfoRequest extends Request
         return [
             'email'         => 'required|email',
             'subject'       => 'required',
-            'brief'         => '',
             'address'       => 'required',
             'emails'        => 'required',
             'phones'        => 'required',

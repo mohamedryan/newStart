@@ -3,11 +3,15 @@ $(document).ready(function() {
     $("a[href='#']").click(function(a) {
         a.preventDefault()
     });
+
+    var lng = document.getElementById('map').getAttribute('data-lng');
+    var lat = document.getElementById('map').getAttribute('data-lat');
+
     var a = new GMaps({
         div: "#map",
         zoom: 16,
-        lat: -12.043333,
-        lng: -77.028333,
+        lat: lat,
+        lng: lng,
         scrollwheel: !1,
         styles: [{
             featureType: "landscape",
@@ -87,8 +91,8 @@ $(document).ready(function() {
         }]
     });
     a.addMarker({
-        lat: -12.043333,
-        lng: -77.028333,
+        lat: lat,
+        lng: lng,
         title: "Lima",
         color: "blue",
         infoWindow: {

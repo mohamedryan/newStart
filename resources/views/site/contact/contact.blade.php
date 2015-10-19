@@ -15,7 +15,7 @@
             });
         }
 
-        //dd($orderedComponent);
+        // dd($contactInfo->brief);
 
     ?>
     @if($fluid && key($fluid) == 0)
