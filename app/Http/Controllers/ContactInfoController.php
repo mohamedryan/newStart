@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\models\ContactInfo;
-use App\Http\Requests\Request\EditContactInfoRequest;
+use App\Http\Requests\EditContactInfoRequest;
 
 class ContactInfoController extends Controller {
 
@@ -31,7 +31,7 @@ class ContactInfoController extends Controller {
 
 		foreach ($request->except(['_token','_method']) as $key => $value) {
 
-            $updateInfo = Setting::where('name','=',$key)->update(['value' => $value]);
+            $updateInfo = ContactInfo::where('key','=',$key)->update(['value' => $value]);
 
             if(!$updateInfo) break;
 
