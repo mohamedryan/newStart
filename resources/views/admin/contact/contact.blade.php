@@ -21,7 +21,7 @@
 						<div class="input-field col s12 m6">
 							<label for="email">email</label>
 							<input id="email" name="email" type="email" value="{{ $info->email }}" required>
-							<small class="helper-text">hello this it just a helper information </small>
+							<small class="helper-text"><span class='info'>hello this it just a helper information</span></small>
 						</div>
 						<div class="input-field col s12 m6">
 							<label for="subject">subject  </label>
